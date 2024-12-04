@@ -5,6 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happy Birthday Tashaa!</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Styles for the confetti and overlay */
+        .confetti {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2em;
+            z-index: 1001;
+            display: none;
+        }
+    </style>
 </head>
 <body>
     <div class="card">
@@ -14,18 +42,37 @@
     </div>
 
     <!-- Add the audio element -->
-    <audio id="birthday-audio" src="audio.mp3"></audio>
+    <audio id="birthday-audio" src="/asset/audio.mp3"></audio>
+
+    <!-- Confetti and overlay elements -->
+    <canvas id="confetti" class="confetti"></canvas>
+    <div id="overlay" class="overlay">🎉 Happy Birthday Tashaa! 🎉</div>
 
     <script>
         function playBirthdaySound() {
-            alert('🎂⭐ Happy Birthday! ⭐🎂\n' +
-                'May your special day be as fun and delightful as a perfect Kirby adventure! Here’s to a year filled with joy, laughter, and lots of wonderful memories. Keep inhaling life’s joys and floating through it with ease!\n' +
-                'Have a fantastic day! 🎉🎈');
-
+            // Show the overlay first
+            const overlay = document.getElementById('overlay');
+            overlay.style.display = 'flex';
+    
             // Play the audio
             const audio = document.getElementById('birthday-audio');
             audio.play();
+    
+            // Trigger confetti
+            const confetti = document.getElementById('confetti');
+            const myConfetti = confetti.create(confetti, { resize: true });
+            myConfetti({
+                particleCount: 100,
+                spread: 70,
+                origin: { y: 0.6 }
+            });
+    
+            // Hide the overlay after a few seconds
+            setTimeout(() => {
+                overlay.style.display = 'none';
+            }, 5000);
         }
-    </script>
+    </script>    
+    
 </body>
 </html>
