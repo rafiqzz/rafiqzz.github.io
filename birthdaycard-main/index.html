@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Tashaa!</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="card">
+        <h1>Tekan button bawah ni 🎉</h1>
+        <p>Bboom bboom 🥳</p>
+        <button onclick="playBirthdaySound()">Click for a Surprise 🎁</button>
+    </div>
+
+    <!-- Add the audio element -->
+    <audio id="birthday-audio" src="audio.mp3"></audio>
+
+    <script>
+        function playBirthdaySound() {
+            alert('🎂⭐ Happy Birthday! ⭐🎂\n' +
+                'May your special day be as fun and delightful as a perfect Kirby adventure! Here’s to a year filled with joy, laughter, and lots of wonderful memories. Keep inhaling life’s joys and floating through it with ease!\n' +
+                'Have a fantastic day! 🎉🎈');
+
+            // Play the audio
+            const audio = document.getElementById('birthday-audio');
+            audio.play();
+        }
+    </script>
+</body>
+</html>
